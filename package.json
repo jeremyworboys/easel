@@ -4,8 +4,13 @@
   "version": "0.0.0",
   "author": "Jeremy Worboys <jw@jeremyworboys.com>",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "express": "3.2.5"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  },
   "keywords": [
     "easel",
     "express",
