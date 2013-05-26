@@ -1,0 +1,29 @@
+{
+  "name": "easel",
+  "description": "Easel is a simple highly opinionated Node MVC framework built on Express",
+  "version": "0.0.0",
+  "author": "Jeremy Worboys <jw@jeremyworboys.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "easel",
+    "express",
+    "mvc",
+    "framework"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeremyworboys/easel"
+  },
+  "main": "index",
+  "bin": {
+    "easel": "./bin/easel"
+    },
+  "scripts": {
+    "test": ""
+  },
+  "engines": {
+    "node": "*"
+  }
+}
