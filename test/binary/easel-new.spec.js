@@ -12,12 +12,22 @@ describe('easel', function() {
 
         var appName = 'testApp';
 
-        it('should create a new application', function(done) {
+        it('should create a new application in a new directory', function(done) {
             exec(easelBin + ' new ' + appName, function(err, stdout) {
                 if (err) return done(err);
                 stdout.should.include('Creating');
                 checkScaffoldNew(appName).should.be.ok;
                 done();
+            });
+        });
+
+        it('should not create a new application in an existing directory', function(done) {
+            exec('mkdir ' + appName, function(err) {
+                if (err) done(err);
+                exec(easelBin + ' new ' + appName, function(err, stdout) {
+                    err.code.should.be.truthy
+                    done();
+                });
             });
         });
 
