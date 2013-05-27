@@ -1,2 +1,6 @@
 
-require('easel').run();
+var Easel = require('easel');
+
+var easel = new Easel();
+
+easel.start();
