@@ -6,7 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "3.2.5",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "wrench": "~1.5.1",
+    "handlebars": "~1.0.11"
   },
   "devDependencies": {
     "should": "*",
