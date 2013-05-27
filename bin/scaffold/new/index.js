@@ -1,6 +1,6 @@
 
 var Easel = require('easel');
 
-var easel = new Easel();
+var app = new Easel();
 
-easel.start();
+app.server.start();
