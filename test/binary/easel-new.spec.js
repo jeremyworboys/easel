@@ -24,8 +24,9 @@ describe('easel', function() {
         it('should not create a new application in an existing directory', function(done) {
             exec('mkdir ' + appName, function(err) {
                 if (err) done(err);
-                exec(easelBin + ' new ' + appName, function(err, stdout) {
-                    err.code.should.be.truthy
+                exec(easelBin + ' new ' + appName, function(err, stdout, stderr) {
+                    stderr.should.include('already exists');
+                    err.code.should.be.truthy;
                     done();
                 });
             });

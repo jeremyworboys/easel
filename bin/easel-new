@@ -9,13 +9,22 @@ var fs = require('fs');
 
 var appName = process.argv[3];
 
+var appPath = path.resolve(appName);
+
+
+
+if (fs.existsSync(appPath)) {
+    console.log();
+    console.error('  ' + appPath + ' already exists');
+    process.exit(1);
+}
+
 
 console.log();
 console.log('  Creating new Easel application');
 
 var scaffold = path.join(__dirname, 'scaffold', 'new');
 
-console.log(scaffold, appName);
 wrench.copyDirSyncRecursive(scaffold, appName, {
     filter: '.DS_Store'
 });
