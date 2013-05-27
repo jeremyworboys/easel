@@ -24,5 +24,6 @@ lib-cov:
 clean:
 	rm -f coverage.html
 	rm -fr lib-cov
+	rm -fr node_modules
 
 .PHONY: test test-unit test-acceptance benchmark clean
