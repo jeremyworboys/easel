@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var name = process.argv.slice(3, 4);
+var args = process.argv.slice(4);
+
+
