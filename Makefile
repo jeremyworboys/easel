@@ -2,12 +2,18 @@
 MOCHA_OPTS= --check-leaks
 REPORTER = dot
 
-test: test-unit test-acceptance
+test: test-unit test-binary test-acceptance
 
 test-unit:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		$(MOCHA_OPTS)
+
+test-binary:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		--bail \
+		test/binary/*.js
 
 test-acceptance:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
