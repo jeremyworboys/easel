@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var version = require('../package.json').version;
+
+
+program
+    .version(version)
+    .usage('<command> [options]')
+    .parse(process.argv);
+
+
+program.on('--help', function() {
+    console.log('  Commands:');
+    console.log();
+    console.log('    new <name> [options] ...]      create a new easel application');
+    console.log();
+    process.exit();
+});
+
+
+var cmd = program.args[0];
+
+
+if (!cmd) {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
+    process.exit();
+}
+
+
+var bin = 'easel-' + cmd;
+
+try {
+    require('./' + bin);
+}
+catch (e) {
+    if (e.code === 'MODULE_NOT_FOUND') {
+        process.stdout.write(program.helpInformation());
+        program.emit('--help');
+        process.exit();
+    }
+    throw e;
+}

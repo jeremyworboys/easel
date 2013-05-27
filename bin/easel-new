@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var version = require('../package.json').version;
+var handlebars = require('handlebars');
+var wrench = require('wrench');
+var path = require('path');
+var fs = require('fs');
+
+
+var appName = process.argv[3];
+
+var appPath = path.resolve(appName);
+
+
+
+if (fs.existsSync(appPath)) {
+    console.log();
+    console.error('  ' + appPath + ' already exists');
+    process.exit(1);
+}
+
+
+console.log();
+console.log('  Creating new Easel application');
+
+var scaffold = path.join(__dirname, 'scaffold', 'new');
+
+wrench.copyDirSyncRecursive(scaffold, appName, {
+    filter: '.DS_Store'
+});
+
+
+var templateVars = {
+    appName: appName,
+    version: version
+};
+
+var templateFiles = [
+    'package.json',
+    'README.md'
+];
+
+var tmplName, input, tmpl, output;
+templateFiles.forEach(function(fileName) {
+    fileName = path.join(appName, fileName);
+    tmplName = fileName + '.hbs';
+
+    input = fs.readFileSync(tmplName, 'utf-8');
+    tmpl = handlebars.compile(input);
+    output = tmpl(templateVars);
+
+    fs.writeFileSync(fileName, output, 'utf-8');
+    fs.unlinkSync(tmplName);
+});

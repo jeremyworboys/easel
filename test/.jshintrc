@@ -22,4 +22,10 @@
   "trailing": true,
   "undef": true,
   "unused": true
+
+  "global": {
+    "describe": false,
+    "it": false,
+    "expect": false
+  }
 }
