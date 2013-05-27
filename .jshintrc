@@ -16,7 +16,7 @@
   "regexdash": true,
   "regexp": true,
   "smarttabs": true,
-  "strict": true,
+  "strict": false,
   "sub": true,
   "trailing": true,
   "undef": true,
